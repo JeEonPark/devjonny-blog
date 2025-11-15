@@ -3,6 +3,7 @@ title: "마크다운 스타일 가이드"
 description: "마크다운 포매팅 완벽 가이드"
 pubDate: "2022-07-15"
 heroImage: "/images/blog-placeholder-4.jpg"
+draft: true
 ---
 
 # 마크다운 스타일 가이드

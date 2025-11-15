@@ -3,6 +3,7 @@ title: "Third post"
 description: "Continuing the development journey"
 pubDate: "2022-07-12"
 heroImage: "/images/blog-placeholder-2.jpg"
+draft: true
 ---
 
 # Third Post

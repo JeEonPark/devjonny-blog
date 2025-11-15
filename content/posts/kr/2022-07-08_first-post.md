@@ -3,6 +3,7 @@ title: "첫 번째 포스트"
 description: "블로그에 오신 것을 환영합니다"
 pubDate: "2022-07-08"
 heroImage: "/images/blog-placeholder-3.jpg"
+draft: true
 ---
 
 # 첫 번째 포스트

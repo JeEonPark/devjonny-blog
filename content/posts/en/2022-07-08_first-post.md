@@ -3,6 +3,7 @@ title: "First post"
 description: "Welcome to my blog"
 pubDate: "2022-07-08"
 heroImage: "/images/blog-placeholder-3.jpg"
+draft: true
 ---
 
 # First Post

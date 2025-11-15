@@ -3,6 +3,7 @@ title: "3番目の投稿"
 description: "開発の旅を続ける"
 pubDate: "2022-07-12"
 heroImage: "/images/blog-placeholder-2.jpg"
+draft: true
 ---
 
 # 3番目の投稿

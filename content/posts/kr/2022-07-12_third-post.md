@@ -3,6 +3,7 @@ title: "세 번째 포스트"
 description: "개발 여정 계속하기"
 pubDate: "2022-07-12"
 heroImage: "/images/blog-placeholder-2.jpg"
+draft: true
 ---
 
 # 세 번째 포스트

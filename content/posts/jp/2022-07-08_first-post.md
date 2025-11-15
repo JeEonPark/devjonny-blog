@@ -3,6 +3,7 @@ title: "最初の投稿"
 description: "ブログへようこそ"
 pubDate: "2022-07-08"
 heroImage: "/images/blog-placeholder-3.jpg"
+draft: true
 ---
 
 # 最初の投稿

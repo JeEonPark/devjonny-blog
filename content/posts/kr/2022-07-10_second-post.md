@@ -3,6 +3,7 @@ title: "두 번째 포스트"
 description: "개발 진행 상황"
 pubDate: "2022-07-10"
 heroImage: "/images/blog-placeholder-1.jpg"
+draft: true
 ---
 
 # 두 번째 포스트

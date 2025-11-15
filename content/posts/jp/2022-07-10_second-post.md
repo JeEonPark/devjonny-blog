@@ -3,6 +3,7 @@ title: "2番目の投稿"
 description: "開発の進捗状況"
 pubDate: "2022-07-10"
 heroImage: "/images/blog-placeholder-1.jpg"
+draft: true
 ---
 
 # 2番目の投稿

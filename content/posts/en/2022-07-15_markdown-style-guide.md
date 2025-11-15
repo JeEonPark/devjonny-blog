@@ -3,6 +3,7 @@ title: "Markdown Style Guide"
 description: "A comprehensive guide to markdown formatting"
 pubDate: "2022-07-15"
 heroImage: "/images/blog-placeholder-4.jpg"
+draft: true
 ---
 
 # Markdown Style Guide

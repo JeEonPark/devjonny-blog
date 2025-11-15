@@ -3,6 +3,7 @@ title: "Second post"
 description: "Development progress"
 pubDate: "2022-07-10"
 heroImage: "/images/blog-placeholder-1.jpg"
+draft: true
 ---
 
 # Second Post
