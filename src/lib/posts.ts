@@ -9,6 +9,15 @@ export interface Post {
   pubDate: string;
   heroImage: string;
   content: string;
+  readingTime: string;
+}
+
+// 읽기 시간 계산 함수 (평균 200 단어/분)
+function calculateReadingTime(content: string): string {
+  const wordsPerMinute = 200;
+  const words = content.trim().split(/\s+/).length;
+  const minutes = Math.ceil(words / wordsPerMinute);
+  return `${minutes} min read`;
 }
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
@@ -37,6 +46,7 @@ export function getAllPosts(): Post[] {
         pubDate: data.pubDate || "",
         heroImage: data.heroImage || "/images/blog-placeholder-1.jpg",
         content,
+        readingTime: calculateReadingTime(content),
       };
     });
 
@@ -74,6 +84,7 @@ export function getPostBySlug(slug: string): Post | null {
       pubDate: data.pubDate || "",
       heroImage: data.heroImage || "/images/blog-placeholder-1.jpg",
       content,
+      readingTime: calculateReadingTime(content),
     };
   } catch (error) {
     return null;

@@ -99,7 +99,6 @@ export default function Header() {
         {/* Desktop Navigation - Centered */}
         <div className="internal-links hidden md:flex gap-1 absolute left-1/2 transform -translate-x-1/2">
           <HeaderLink href="/">Home</HeaderLink>
-          <HeaderLink href="/work">Work</HeaderLink>
           <HeaderLink href="/post">Post</HeaderLink>
         </div>
 
@@ -153,24 +152,6 @@ export default function Header() {
               onClick={closeMobileMenu}
               className="mobile-nav-link flex items-center justify-between py-2.5 px-3 text-black dark:text-white hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-all duration-150 group">
               <span className="text-[1rem] font-normal tracking-[-0.005em]">Home</span>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-black/20 dark:text-white/20 group-hover:text-black/40 dark:group-hover:text-white/40 group-hover:translate-x-0.5 transition-all duration-150">
-                <polyline points="9,18 15,12 9,6"></polyline>
-              </svg>
-            </Link>
-            <Link
-              href={createLink("/work")}
-              onClick={closeMobileMenu}
-              className="mobile-nav-link flex items-center justify-between py-2.5 px-3 text-black dark:text-white hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-all duration-150 group">
-              <span className="text-[1rem] font-normal tracking-[-0.005em]">Work</span>
               <svg
                 width="14"
                 height="14"
