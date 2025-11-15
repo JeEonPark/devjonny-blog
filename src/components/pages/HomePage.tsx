@@ -62,6 +62,9 @@ export default function HomePage({ lang }: HomePageProps) {
           </div>
           <div className="intro-content space-y-4 md:space-y-5">
             <p className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-95 break-keep mb-5">
+              {getTranslation(lang, "intro.company")}
+            </p>
+            <p className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-95 break-keep mb-5">
               <strong className="font-semibold">{getTranslation(lang, "intro.title")}</strong>
             </p>
             <p className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-90 break-keep mb-5">
