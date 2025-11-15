@@ -1,7 +1,10 @@
 import Header from "@/components/Header";
+import LanguageSelector from "@/components/LanguageSelector";
 import type { Post } from "@/lib/posts";
 import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
 import type { Language } from "@/lib/translations";
+import "highlight.js/styles/github-dark.css";
 
 interface PostDetailPageProps {
   post: Post;
@@ -31,21 +34,36 @@ export default function PostDetailPage({ post, lang }: PostDetailPageProps) {
       <section className="hero h-[320px] flex items-center justify-center relative overflow-hidden pt-[100px] before:content-[''] before:absolute before:inset-0 before:bg-[url('/images/banner.jpg')] before:bg-center before:bg-cover before:opacity-50 before:z-[1] after:content-[''] after:absolute after:inset-0 after:bg-black/20 after:z-[1]">
         <div className="hero-content flex items-center gap-8 z-[2] relative text-white -translate-y-[35px] justify-center">
           <div className="hero-text text-center">
-            <h1 className="text-[1.4rem] font-bold m-0 mb-2 tracking-[-0.02em]">
+            <h1 className="text-[1.5rem] md:text-[1.6rem] font-bold m-0 mb-2 tracking-[-0.02em]">
               <span className="text-white">{post.title}</span>
             </h1>
             <p className="text-[0.9rem] opacity-80">
-              {formatDate(post.pubDate)}
+              {formatDate(post.pubDate)} · {post.readingTime}
             </p>
           </div>
         </div>
       </section>
 
       <div className="max-w-4xl mx-auto pt-8 pb-16 px-4 md:px-6">
+        {/* Language Selector */}
+        <LanguageSelector />
+
+        {/* Hero Image */}
+        {post.heroImage && (
+          <div className="mb-8 overflow-hidden">
+            <img
+              src={post.heroImage}
+              alt={post.title}
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        )}
+
         {/* Post Content */}
         <article className="prose prose-invert prose-lg max-w-none">
           <div className="markdown-content">
             <ReactMarkdown
+              rehypePlugins={[rehypeHighlight]}
               components={{
                 h1: ({ children }) => (
                   <h1 className="text-[2.5rem] font-bold mt-8 mb-4 text-[rgb(var(--white))]">
@@ -87,13 +105,13 @@ export default function PostDetailPage({ post, lang }: PostDetailPageProps) {
                       {children}
                     </code>
                   ) : (
-                    <code className="block bg-[rgba(255,255,255,0.05)] p-4 rounded-lg overflow-x-auto text-[0.95rem] font-mono text-[rgba(var(--white),0.95)]">
+                    <code className={className}>
                       {children}
                     </code>
                   );
                 },
                 pre: ({ children }) => (
-                  <pre className="bg-[rgba(255,255,255,0.05)] p-4 rounded-lg overflow-x-auto mb-6 border border-[rgba(255,255,255,0.1)]">
+                  <pre className="!bg-[#0d1117] p-4 rounded-lg overflow-x-auto mb-6 border border-[rgba(255,255,255,0.1)]">
                     {children}
                   </pre>
                 ),

@@ -12,7 +12,8 @@ interface PostPageProps {
 
 export default async function PostDetail({ params }: PostPageProps) {
   const { lang, slug } = await params;
-  const post = getPostBySlug(slug);
+  // 현재 언어에 맞는 포스트만 가져오기
+  const post = getPostBySlug(slug, lang);
 
   if (!post) {
     notFound();
@@ -23,13 +24,13 @@ export default async function PostDetail({ params }: PostPageProps) {
 
 // generateStaticParams로 모든 포스트 페이지를 사전 생성
 export async function generateStaticParams() {
-  const posts = getAllPosts();
-  const languages: Language[] = ["en", "jp"];
+  const languages: Language[] = ["kr", "en", "jp"];
 
-  return languages.flatMap((lang) =>
-    posts.map((post) => ({
+  return languages.flatMap((lang) => {
+    const posts = getAllPosts(lang);
+    return posts.map((post) => ({
       lang,
       slug: post.slug,
-    }))
-  );
+    }));
+  });
 }
