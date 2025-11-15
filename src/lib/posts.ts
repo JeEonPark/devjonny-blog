@@ -11,6 +11,7 @@ export interface Post {
   content: string;
   readingTime: string;
   locale: string;
+  draft?: boolean; // true면 비공개 포스트
 }
 
 // 읽기 시간 계산 함수 (평균 200 단어/분)
@@ -64,14 +65,18 @@ export function getAllPosts(locale?: Locale): Post[] {
           content,
           readingTime: calculateReadingTime(content),
           locale: loc,
+          draft: data.draft || false,
         };
       });
 
     allPostsData.push(...posts);
   });
 
+  // draft가 아닌 포스트만 필터링
+  const publishedPosts = allPostsData.filter((post) => !post.draft);
+
   // 날짜순으로 정렬 (최신순)
-  return allPostsData.sort((a, b) => {
+  return publishedPosts.sort((a, b) => {
     if (a.pubDate < b.pubDate) {
       return 1;
     } else {
@@ -113,6 +118,7 @@ export function getPostBySlug(slug: string, locale?: Locale): Post | null {
           content,
           readingTime: calculateReadingTime(content),
           locale: loc,
+          draft: data.draft || false,
         };
       }
     }
