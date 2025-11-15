@@ -1,6 +1,6 @@
 ---
 title: "First post"
-description: "Lorem ipsum dolor sit amet"
+description: "Welcome to my blog"
 pubDate: "2022-07-08"
 heroImage: "/images/blog-placeholder-3.jpg"
 ---
@@ -11,7 +11,7 @@ This is my first blog post! Welcome to my blog.
 
 ## What is this about?
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+This blog will cover development, technology, and various topics. I'll be sharing useful content in the future.
 
 ## Next Steps
 

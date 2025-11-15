@@ -1,6 +1,6 @@
 ---
 title: "Second post"
-description: "Consectetur adipiscing elit"
+description: "Development progress"
 pubDate: "2022-07-10"
 heroImage: "/images/blog-placeholder-1.jpg"
 ---
@@ -11,7 +11,7 @@ This is my second blog post!
 
 ## Progress
 
-Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+I'm learning a lot as I continue developing. I'll keep showing my growth and progress.
 
 ## What I learned
 
