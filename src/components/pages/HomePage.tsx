@@ -94,7 +94,7 @@ export default function HomePage({ lang }: HomePageProps) {
                     2025.04
                   </div>
                   <div className="date-sub text-[0.6rem] md:text-[0.75rem] text-[rgb(var(--neutral))] opacity-70">
-                    Present
+                    - Now
                   </div>
                 </div>
                 <div className="timeline-dot absolute left-[56px] md:left-[70px] top-[26px] md:top-[28px] w-[10px] h-[10px] md:w-[14px] md:h-[14px] rounded-full bg-[rgb(var(--primary))] border-[3px] border-[rgba(var(--bg),1)] shadow-[0_0_0_2px_rgba(var(--primary),0.3)]"></div>
@@ -122,7 +122,7 @@ export default function HomePage({ lang }: HomePageProps) {
                     2024.03
                   </div>
                   <div className="date-sub text-[0.6rem] md:text-[0.75rem] text-[rgb(var(--neutral))] opacity-70">
-                    2024.12
+                    - 2024.12
                   </div>
                 </div>
                 <div className="timeline-dot absolute left-[56px] md:left-[70px] top-[26px] md:top-[28px] w-[10px] h-[10px] md:w-[14px] md:h-[14px] rounded-full bg-[rgb(var(--primary))] border-[3px] border-[rgba(var(--bg),1)] shadow-[0_0_0_2px_rgba(var(--primary),0.3)]"></div>
@@ -150,7 +150,7 @@ export default function HomePage({ lang }: HomePageProps) {
                     2022.09
                   </div>
                   <div className="date-sub text-[0.6rem] md:text-[0.75rem] text-[rgb(var(--neutral))] opacity-70">
-                    2023.02
+                    - 2023.02
                   </div>
                 </div>
                 <div className="timeline-dot absolute left-[56px] md:left-[70px] top-[26px] md:top-[28px] w-[10px] h-[10px] md:w-[14px] md:h-[14px] rounded-full bg-[rgb(var(--primary))] border-[3px] border-[rgba(var(--bg),1)] shadow-[0_0_0_2px_rgba(var(--primary),0.3)]"></div>
@@ -181,7 +181,7 @@ export default function HomePage({ lang }: HomePageProps) {
                     2021.09
                   </div>
                   <div className="date-sub text-[0.6rem] md:text-[0.75rem] text-[rgb(var(--neutral))] opacity-70">
-                    2024.07
+                    - 2024.07
                   </div>
                 </div>
                 <div className="timeline-dot absolute left-[56px] md:left-[70px] top-[26px] md:top-[28px] w-[10px] h-[10px] md:w-[14px] md:h-[14px] rounded-full bg-[rgb(var(--primary))] border-[3px] border-[rgba(var(--bg),1)] shadow-[0_0_0_2px_rgba(var(--primary),0.3)]"></div>
@@ -212,7 +212,7 @@ export default function HomePage({ lang }: HomePageProps) {
                     2018.03
                   </div>
                   <div className="date-sub text-[0.6rem] md:text-[0.75rem] text-[rgb(var(--neutral))] opacity-70">
-                    2024.02
+                    - 2024.02
                   </div>
                 </div>
                 <div className="timeline-dot absolute left-[56px] md:left-[70px] top-[26px] md:top-[28px] w-[10px] h-[10px] md:w-[14px] md:h-[14px] rounded-full bg-[rgb(var(--primary))] border-[3px] border-[rgba(var(--bg),1)] shadow-[0_0_0_2px_rgba(var(--primary),0.3)]"></div>
