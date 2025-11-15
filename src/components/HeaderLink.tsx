@@ -12,19 +12,31 @@ interface HeaderLinkProps {
 export default function HeaderLink({ href, children, className = "" }: HeaderLinkProps) {
   const pathname = usePathname();
 
-  // Determine current language from pathname
-  const currentLang = pathname.startsWith("/en/") ? "en" : pathname.startsWith("/jp/") ? "jp" : "kr";
+  // 현재 URL에서 언어 코드 감지 (Header.tsx와 동일한 로직)
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const supportedLanguages = ["en", "jp"];
+  const currentLang = pathSegments.length > 0 && supportedLanguages.includes(pathSegments[0]) ? pathSegments[0] : "";
 
-  // Generate language-specific href
+  // 언어별 링크 생성
   const getLanguageHref = (baseHref: string) => {
-    if (currentLang === "kr") {
-      return baseHref;
+    if (currentLang) {
+      return `/${currentLang}${baseHref}`;
     }
-    return `/${currentLang}${baseHref}`;
+    return baseHref;
   };
 
   const languageHref = getLanguageHref(href);
-  const isActive = pathname === languageHref || pathname === href;
+
+  // active 상태 체크 (언어 경로도 고려, 하위 경로 포함)
+  const isActive = (() => {
+    // 홈 페이지는 정확히 일치하는 경우만
+    if (href === "/") {
+      return pathname === languageHref || pathname === href ||
+        (currentLang && pathname === `/${currentLang}`);
+    }
+    // 다른 페이지는 해당 경로로 시작하면 활성화
+    return pathname.startsWith(languageHref) || pathname.startsWith(href);
+  })();
 
   return (
     <Link
