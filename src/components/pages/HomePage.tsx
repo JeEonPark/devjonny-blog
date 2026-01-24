@@ -47,7 +47,7 @@ export default function HomePage({ lang }: HomePageProps) {
               />
               <div className="intro-text flex-grow">
                 <h1 className="name text-[1.5rem] md:text-[2rem] font-semibold text-[rgb(var(--white))] m-0 mb-3 tracking-[-0.02em] leading-[1.2]">
-                  Jonny
+                  Jonny (JeEon Park)
                 </h1>
                 <div className="job-info flex items-center justify-between gap-1 md:gap-6 flex-wrap">
                   <p className="job-title text-sm md:text-lg text-[rgb(var(--primary))] m-0 font-medium opacity-90">
