@@ -61,21 +61,21 @@ export default function HomePage({ lang }: HomePageProps) {
             </div>
           </div>
           <div className="intro-content space-y-4 md:space-y-5">
-            <p className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-95 break-keep mb-5">
+            <p className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-95 break-keep break-words mb-5">
               {getTranslation(lang, "intro.company")}
             </p>
-            <p className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-95 break-keep mb-5">
+            <p className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-95 break-keep break-words mb-5">
               <strong className="font-semibold">{getTranslation(lang, "intro.title")}</strong>
             </p>
-            <p className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-90 break-keep mb-5">
+            <p className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-90 break-keep break-words mb-5">
               {getTranslation(lang, "intro.paragraph1")}
             </p>
             <p
-              className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-90 break-keep mb-5"
+              className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-90 break-keep break-words mb-5"
               dangerouslySetInnerHTML={{ __html: getTranslation(lang, "intro.paragraph2") }}
             />
             <p
-              className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-90 mb-0 break-keep"
+              className="text-[0.85rem] md:text-[1rem] leading-[1.7] md:leading-[1.8] text-[rgb(var(--white))] opacity-90 mb-0 break-keep break-words"
               dangerouslySetInnerHTML={{ __html: getTranslation(lang, "intro.paragraph3") }}
             />
           </div>
