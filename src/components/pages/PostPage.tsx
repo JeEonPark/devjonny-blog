@@ -70,13 +70,6 @@ export default function PostPage({ lang, posts }: PostPageProps) {
 
                   {/* Post Content */}
                   <div className="pt-6 flex flex-col flex-1">
-                    {/* Category Tag */}
-                    {post.category && (
-                      <div className="text-[0.7rem] text-[rgba(var(--white),0.5)] mb-3 font-medium uppercase tracking-[0.1em]">
-                        {post.category}
-                      </div>
-                    )}
-
                     <h3 className="font-bold text-2xl text-[rgb(var(--white))] mb-2 leading-tight line-clamp-2">
                       {post.title}
                     </h3>
