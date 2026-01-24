@@ -31,7 +31,7 @@ export const translations = {
     "intro.paragraph1":
       'While repeating the daily routine of learning, mastering, and creating, I often ask myself, "Am I really growing right now?"',
     "intro.paragraph2":
-      "I still don't know the answer for sure.<br>But one thing I'm confident about is that growth starts with asking questions to yourself.",
+      "I still don't know the answer for sure.<br>But one thing I'm confident about is that growth starts with asking questions to myself.",
     "intro.paragraph3":
       'I continue to develop in those questions, living while contemplating <strong class="font-semibold">what to create, why to create, and how to create</strong>.<br>I plan to record <strong class="font-semibold">those thoughts and processes step by step</strong> in this post.',
     "work.page.title": "Work",
