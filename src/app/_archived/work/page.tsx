@@ -1,4 +1,4 @@
-import WorkPage from "@/components/pages/WorkPage";
+import WorkPage from "@/components/_archived/WorkPage";
 
 export default function Work() {
   return <WorkPage lang="kr" />;
