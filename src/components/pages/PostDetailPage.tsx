@@ -1,9 +1,14 @@
-import Header from "@/components/Header";
-import LanguageSelector from "@/components/LanguageSelector";
-import type { Post } from "@/lib/posts";
+import Image from "next/image";
+import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
-import type { Language } from "@/lib/translations";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import LanguageSelector from "@/components/LanguageSelector";
+import { BCP47, formatDate, localizePath } from "@/lib/i18n";
+import type { Post } from "@/lib/posts";
+import { getTranslation, type Language } from "@/lib/translations";
 import "highlight.js/styles/github-dark.css";
 
 interface PostDetailPageProps {
@@ -11,138 +16,146 @@ interface PostDetailPageProps {
   lang: Language;
 }
 
+function isExternalHref(href?: string): boolean {
+  return Boolean(href && /^(https?:)?\/\//.test(href));
+}
+
 export default function PostDetailPage({ post, lang }: PostDetailPageProps) {
-  // 날짜 포맷팅
-  const formatDate = (dateString: string) => {
-    try {
-      const date = new Date(dateString);
-      return date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
-    } catch {
-      return dateString;
-    }
-  };
+  const dateLabel = formatDate(post.pubDate, lang, { year: "numeric", month: "long", day: "numeric" });
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen" lang={BCP47[lang]}>
       <Header />
 
-      {/* Hero Section */}
-      <section className="hero h-[320px] flex items-center justify-center relative overflow-hidden pt-[100px] before:content-[''] before:absolute before:inset-0 before:bg-[url('/images/banner.jpg')] before:bg-center before:bg-cover before:opacity-50 before:z-[1] after:content-[''] after:absolute after:inset-0 after:bg-black/20 after:z-[1]">
-        <div className="hero-content flex items-center gap-8 z-[2] relative text-white -translate-y-[35px] justify-center">
-          <div className="hero-text text-center">
-            <h1 className="text-[1.5rem] md:text-[1.6rem] font-bold m-0 mb-2 tracking-[-0.02em]">
-              <span className="text-white">{post.title}</span>
-            </h1>
-            <p className="text-[0.9rem] opacity-80">
-              {formatDate(post.pubDate)} · {post.readingTime}
-            </p>
-          </div>
+      <Hero>
+        <div>
+          <h1 className="text-[1.6rem] md:text-[2rem] font-semibold m-0 mb-2 tracking-[-0.02em] leading-[1.2] break-keep">
+            {post.title}
+          </h1>
+          <p className="text-[0.9rem] opacity-80 m-0">
+            <time dateTime={post.pubDate}>{dateLabel}</time> · {post.readingTime}
+            {post.draft && (
+              <span className="ml-2 px-2 py-0.5 rounded text-[0.7rem] font-medium uppercase tracking-wider bg-[rgba(var(--primary),0.2)] text-[rgb(var(--primary))] align-middle">
+                Draft
+              </span>
+            )}
+          </p>
         </div>
-      </section>
+      </Hero>
 
       <div className="max-w-4xl mx-auto pt-8 pb-16 px-4 md:px-6">
-        {/* Language Selector */}
         <LanguageSelector />
 
-        {/* Hero Image */}
         {post.heroImage && (
-          <div className="mb-8 overflow-hidden">
-            <img
+          <div className="mb-8 overflow-hidden rounded-lg relative aspect-[16/9] bg-white/[0.03]">
+            <Image
               src={post.heroImage}
-              alt={post.title}
-              className="w-full h-auto object-cover"
+              alt=""
+              fill
+              priority
+              sizes="(min-width: 896px) 896px, 100vw"
+              className="object-cover"
             />
           </div>
         )}
 
-        {/* Post Content */}
-        <article className="prose prose-invert prose-lg max-w-none">
-          <div className="markdown-content">
-            <ReactMarkdown
-              rehypePlugins={[rehypeHighlight]}
-              components={{
-                h1: ({ children }) => (
-                  <h1 className="text-[2.5rem] font-bold mt-8 mb-4 text-[rgb(var(--white))]">
+        <article className="markdown-content">
+          <ReactMarkdown
+            rehypePlugins={[rehypeHighlight]}
+            components={{
+              h1: ({ children }) => (
+                <h2 className="text-[1.5rem] md:text-[1.8rem] font-semibold mt-10 mb-4 text-[rgb(var(--white))] break-keep">
+                  {children}
+                </h2>
+              ),
+              h2: ({ children }) => (
+                <h2 className="text-[1.35rem] md:text-[1.6rem] font-semibold mt-10 mb-4 text-[rgb(var(--white))] break-keep">
+                  {children}
+                </h2>
+              ),
+              h3: ({ children }) => (
+                <h3 className="text-[1.15rem] md:text-[1.3rem] font-semibold mt-8 mb-3 text-[rgb(var(--white))] break-keep">
+                  {children}
+                </h3>
+              ),
+              p: ({ children }) => (
+                <p className="text-[1.05rem] md:text-[1.1rem] leading-[1.8] mb-6 text-[rgba(var(--white),0.9)] break-words">
+                  {children}
+                </p>
+              ),
+              ul: ({ children }) => (
+                <ul className="list-disc pl-6 mb-6 space-y-2 text-[rgba(var(--white),0.9)]">{children}</ul>
+              ),
+              ol: ({ children }) => (
+                <ol className="list-decimal pl-6 mb-6 space-y-2 text-[rgba(var(--white),0.9)]">{children}</ol>
+              ),
+              li: ({ children }) => <li className="text-[1.05rem] md:text-[1.1rem] leading-[1.8]">{children}</li>,
+              code: ({ children, className }) => {
+                const isInline = !className;
+                return isInline ? (
+                  <code className="bg-[rgba(var(--primary),0.15)] text-[rgb(var(--primary))] px-1.5 py-0.5 rounded text-[0.9em] font-mono">
                     {children}
-                  </h1>
-                ),
-                h2: ({ children }) => (
-                  <h2 className="text-[2rem] font-semibold mt-8 mb-4 text-[rgb(var(--white))]">
-                    {children}
-                  </h2>
-                ),
-                h3: ({ children }) => (
-                  <h3 className="text-[1.5rem] font-semibold mt-6 mb-3 text-[rgb(var(--white))]">
-                    {children}
-                  </h3>
-                ),
-                p: ({ children }) => (
-                  <p className="text-[1.1rem] leading-[1.8] mb-6 text-[rgba(var(--white),0.9)]">
-                    {children}
-                  </p>
-                ),
-                ul: ({ children }) => (
-                  <ul className="list-disc list-inside mb-6 space-y-2 text-[rgba(var(--white),0.9)]">
-                    {children}
-                  </ul>
-                ),
-                ol: ({ children }) => (
-                  <ol className="list-decimal list-inside mb-6 space-y-2 text-[rgba(var(--white),0.9)]">
-                    {children}
-                  </ol>
-                ),
-                li: ({ children }) => (
-                  <li className="text-[1.1rem] leading-[1.8]">{children}</li>
-                ),
-                code: ({ children, className }) => {
-                  const isInline = !className;
-                  return isInline ? (
-                    <code className="bg-[rgba(var(--primary),0.15)] text-[rgb(var(--primary))] px-2 py-1 rounded text-[0.9em] font-mono">
-                      {children}
-                    </code>
-                  ) : (
-                    <code className={className}>
-                      {children}
-                    </code>
-                  );
-                },
-                pre: ({ children }) => (
-                  <pre className="!bg-[#0d1117] p-4 rounded-lg overflow-x-auto mb-6 border border-[rgba(255,255,255,0.1)]">
-                    {children}
-                  </pre>
-                ),
-                blockquote: ({ children }) => (
-                  <blockquote className="border-l-4 border-[rgb(var(--primary))] pl-4 italic my-6 text-[rgba(var(--white),0.8)]">
-                    {children}
-                  </blockquote>
-                ),
-                a: ({ children, href }) => (
+                  </code>
+                ) : (
+                  <code className={className}>{children}</code>
+                );
+              },
+              pre: ({ children }) => (
+                <pre className="!bg-[rgb(32,32,32)] p-4 rounded-lg overflow-x-auto mb-6 border border-[rgba(255,255,255,0.1)] text-[0.9rem]">
+                  {children}
+                </pre>
+              ),
+              blockquote: ({ children }) => (
+                <blockquote className="border-l border-[rgba(var(--primary),0.7)] pl-5 italic my-6 text-[rgba(var(--white),0.8)]">
+                  {children}
+                </blockquote>
+              ),
+              a: ({ children, href }) => {
+                const external = isExternalHref(href);
+                return (
                   <a
                     href={href}
-                    className="text-[rgb(var(--primary))] hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer">
+                    className="text-[rgb(var(--primary))] hover:underline break-all"
+                    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
                     {children}
                   </a>
-                ),
-                strong: ({ children }) => (
-                  <strong className="font-semibold text-[rgb(var(--white))]">
-                    {children}
-                  </strong>
-                ),
-                em: ({ children }) => (
-                  <em className="italic text-[rgba(var(--white),0.9)]">{children}</em>
-                ),
-              }}>
-              {post.content}
-            </ReactMarkdown>
-          </div>
+                );
+              },
+              img: ({ src, alt }) => (
+                // Markdown images come from arbitrary sources, so a plain <img> is used here.
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={typeof src === "string" ? src : undefined} alt={alt ?? ""} loading="lazy" className="rounded-lg my-6 max-w-full h-auto" />
+              ),
+              hr: () => <hr className="my-10 border-white/10" />,
+              table: ({ children }) => (
+                <div className="overflow-x-auto mb-6">
+                  <table className="w-full text-left text-[0.95rem] border-collapse">{children}</table>
+                </div>
+              ),
+              th: ({ children }) => (
+                <th className="border-b border-white/20 px-3 py-2 font-semibold text-[rgb(var(--white))]">{children}</th>
+              ),
+              td: ({ children }) => (
+                <td className="border-b border-white/10 px-3 py-2 text-[rgba(var(--white),0.9)]">{children}</td>
+              ),
+              strong: ({ children }) => <strong className="font-semibold text-[rgb(var(--white))]">{children}</strong>,
+              em: ({ children }) => <em className="italic text-[rgba(var(--white),0.9)]">{children}</em>,
+            }}>
+            {post.content}
+          </ReactMarkdown>
         </article>
+
+        <nav className="mt-16 pt-8 border-t border-white/10">
+          <Link
+            href={localizePath("/post", lang)}
+            className="inline-flex items-center gap-2 text-[rgb(var(--primary))] hover:underline">
+            <span aria-hidden="true">←</span>
+            {getTranslation(lang, "post.page.title")}
+          </Link>
+        </nav>
       </div>
+
+      <Footer lang={lang} />
     </main>
   );
 }

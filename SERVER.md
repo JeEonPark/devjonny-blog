@@ -20,7 +20,7 @@ The service definition is in `ops/devjonny-blog.service`.
 ## Deployment
 
 Push to `main` runs a build check, syncs source into the application directory,
-installs dependencies, builds, restarts the service, and checks `/` and `/post`.
+installs dependencies, builds, restarts the service, and checks `/`.
 GitHub Actions uses `BLOG_DEPLOY_HOST` and `BLOG_DEPLOY_KEY` repository secrets.
 
 The retired server at 140.245.64.120 and its PM2 deployment are no longer used.

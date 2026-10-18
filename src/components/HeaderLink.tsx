@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { getLanguageFromPathname, localizePath, stripLanguagePrefix } from "@/lib/i18n";
 
 interface HeaderLinkProps {
+  // Language-agnostic path such as "/" or "/post".
   href: string;
   children: React.ReactNode;
   className?: string;
@@ -11,37 +13,18 @@ interface HeaderLinkProps {
 
 export default function HeaderLink({ href, children, className = "" }: HeaderLinkProps) {
   const pathname = usePathname();
+  const lang = getLanguageFromPathname(pathname);
+  const languageHref = localizePath(href, lang);
 
-  // 현재 URL에서 언어 코드 감지 (Header.tsx와 동일한 로직)
-  const pathSegments = pathname.split("/").filter(Boolean);
-  const supportedLanguages = ["en", "jp"];
-  const currentLang = pathSegments.length > 0 && supportedLanguages.includes(pathSegments[0]) ? pathSegments[0] : "";
-
-  // 언어별 링크 생성
-  const getLanguageHref = (baseHref: string) => {
-    if (currentLang) {
-      return `/${currentLang}${baseHref}`;
-    }
-    return baseHref;
-  };
-
-  const languageHref = getLanguageHref(href);
-
-  // active 상태 체크 (언어 경로도 고려, 하위 경로 포함)
-  const isActive = (() => {
-    // 홈 페이지는 정확히 일치하는 경우만
-    if (href === "/") {
-      return pathname === languageHref || pathname === href ||
-        (currentLang && pathname === `/${currentLang}`);
-    }
-    // 다른 페이지는 해당 경로로 시작하면 활성화
-    return pathname.startsWith(languageHref) || pathname.startsWith(href);
-  })();
+  // Compare against the unprefixed path so "/en/post/foo" still highlights "Post".
+  const basePath = stripLanguagePrefix(pathname);
+  const isActive = href === "/" ? basePath === "/" : basePath === href || basePath.startsWith(`${href}/`);
 
   return (
     <Link
       href={languageHref}
-      className={`inline-block no-underline py-2 px-3 text-black dark:text-white hover:text-primary transition-colors duration-200 ${
+      aria-current={isActive ? "page" : undefined}
+      className={`inline-block no-underline py-2 px-3 text-[rgb(var(--white))] hover:text-[rgb(var(--primary))] transition-colors duration-200 ${
         isActive ? "active" : ""
       } ${className}`}>
       {children}

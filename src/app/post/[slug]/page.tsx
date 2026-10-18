@@ -1,16 +1,40 @@
-import PostDetailPage from "@/components/pages/PostDetailPage";
-import { getPostBySlug, getAllPosts } from "@/lib/posts";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import PostDetailPage from "@/components/pages/PostDetailPage";
+import { buildPageMetadata } from "@/lib/metadata";
+import { getAllPosts, getAvailableLocales, getPostBySlug } from "@/lib/posts";
+import { POSTS_ENABLED } from "@/lib/site";
 
 interface PostPageProps {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+  if (!POSTS_ENABLED) {
+    return {};
+  }
+  const { slug } = await params;
+  const post = getPostBySlug(slug, "kr");
+  if (!post) {
+    return {};
+  }
+  return buildPageMetadata({
+    lang: "kr",
+    path: `/post/${slug}`,
+    title: post.title,
+    description: post.description,
+    image: post.heroImage,
+    availableLanguages: getAvailableLocales(slug),
+    type: "article",
+    publishedTime: post.pubDate,
+  });
 }
 
 export default async function PostDetail({ params }: PostPageProps) {
+  if (!POSTS_ENABLED) {
+    notFound();
+  }
   const { slug } = await params;
-  // 기본 언어(kr)의 포스트만 가져오기
   const post = getPostBySlug(slug, "kr");
 
   if (!post) {
@@ -20,10 +44,9 @@ export default async function PostDetail({ params }: PostPageProps) {
   return <PostDetailPage post={post} lang="kr" />;
 }
 
-// generateStaticParams로 모든 포스트 페이지를 사전 생성
-export async function generateStaticParams() {
-  const posts = getAllPosts("kr");
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+export function generateStaticParams() {
+  if (!POSTS_ENABLED) {
+    return [];
+  }
+  return getAllPosts("kr").map((post) => ({ slug: post.slug }));
 }

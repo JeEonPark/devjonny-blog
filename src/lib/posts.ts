@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { LANGUAGES, type Language } from "./i18n";
 
 export interface Post {
   slug: string;
@@ -10,121 +11,86 @@ export interface Post {
   heroImage: string;
   content: string;
   readingTime: string;
-  locale: string;
-  draft?: boolean; // true면 비공개 포스트
+  locale: Language;
+  draft: boolean;
 }
 
-// 읽기 시간 계산 함수 (평균 200 단어/분)
+const POSTS_DIRECTORY = path.join(process.cwd(), "content/posts");
+const DEFAULT_HERO_IMAGE = "/images/blog-placeholder-1.jpg";
+
+// Drafts are visible while developing so they can be previewed,
+// and hidden from every production build.
+const INCLUDE_DRAFTS = process.env.NODE_ENV === "development";
+
+// Reading speed assumptions. CJK text has no word boundaries,
+// so it is measured per character instead of per whitespace-separated word.
+const WORDS_PER_MINUTE = 200;
+const CJK_CHARS_PER_MINUTE = 500;
+const CJK_PATTERN = /[぀-ヿ㐀-䶿一-鿿가-힯豈-﫿]/g;
+
 function calculateReadingTime(content: string): string {
-  const wordsPerMinute = 200;
-  const words = content.trim().split(/\s+/).length;
-  const minutes = Math.ceil(words / wordsPerMinute);
+  const cjkCount = (content.match(CJK_PATTERN) ?? []).length;
+  const nonCjk = content.replace(CJK_PATTERN, " ").trim();
+  const wordCount = nonCjk ? nonCjk.split(/\s+/).length : 0;
+  const minutes = Math.max(1, Math.ceil(wordCount / WORDS_PER_MINUTE + cjkCount / CJK_CHARS_PER_MINUTE));
   return `${minutes} min read`;
 }
 
-const postsDirectory = path.join(process.cwd(), "content/posts");
-
-// 지원하는 언어 목록
-export const SUPPORTED_LOCALES = ["kr", "en", "jp"] as const;
-export type Locale = (typeof SUPPORTED_LOCALES)[number];
-
-export function getAllPosts(locale?: Locale): Post[] {
-  const locales = locale ? [locale] : SUPPORTED_LOCALES;
-  const allPostsData: Post[] = [];
-
-  // 각 언어 폴더를 순회
-  locales.forEach((loc) => {
-    const localeDir = path.join(postsDirectory, loc);
-
-    // 폴더가 존재하지 않으면 스킵
-    if (!fs.existsSync(localeDir)) {
-      return;
-    }
-
-    const fileNames = fs.readdirSync(localeDir);
-    const posts = fileNames
-      .filter((fileName) => fileName.endsWith(".md"))
-      .map((fileName) => {
-        // 파일명에서 날짜 부분과 .md 제거하여 slug 생성
-        // 예: 2022-07-08_first-post.md -> first-post
-        const slug = fileName.replace(/\.md$/, "").replace(/^\d{4}-\d{2}-\d{2}_/, "");
-
-        // 파일 내용 읽기
-        const fullPath = path.join(localeDir, fileName);
-        const fileContents = fs.readFileSync(fullPath, "utf8");
-
-        // gray-matter로 frontmatter 파싱
-        const { data, content } = matter(fileContents);
-
-        return {
-          slug,
-          title: data.title || slug,
-          description: data.description || "",
-          pubDate: data.pubDate || "",
-          heroImage: data.heroImage || "/images/blog-placeholder-1.jpg",
-          content,
-          readingTime: calculateReadingTime(content),
-          locale: loc,
-          draft: data.draft || false,
-        };
-      });
-
-    allPostsData.push(...posts);
-  });
-
-  // draft가 아닌 포스트만 필터링
-  const publishedPosts = allPostsData.filter((post) => !post.draft);
-
-  // 날짜순으로 정렬 (최신순)
-  return publishedPosts.sort((a, b) => {
-    if (a.pubDate < b.pubDate) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+// "2022-07-08_first-post.md" -> "first-post"
+function fileNameToSlug(fileName: string): string {
+  return fileName.replace(/\.md$/, "").replace(/^\d{4}-\d{2}-\d{2}_/, "");
 }
 
-export function getPostBySlug(slug: string, locale?: Locale): Post | null {
-  try {
-    const locales = locale ? [locale] : SUPPORTED_LOCALES;
+function listMarkdownFiles(locale: Language): string[] {
+  const localeDir = path.join(POSTS_DIRECTORY, locale);
+  if (!fs.existsSync(localeDir)) {
+    return [];
+  }
+  return fs.readdirSync(localeDir).filter((fileName) => fileName.endsWith(".md"));
+}
 
-    // 각 언어 폴더에서 slug와 매칭되는 파일 찾기
-    for (const loc of locales) {
-      const localeDir = path.join(postsDirectory, loc);
+function readPost(locale: Language, fileName: string): Post {
+  const fullPath = path.join(POSTS_DIRECTORY, locale, fileName);
+  const { data, content } = matter(fs.readFileSync(fullPath, "utf8"));
+  const slug = fileNameToSlug(fileName);
 
-      // 폴더가 존재하지 않으면 스킵
-      if (!fs.existsSync(localeDir)) {
-        continue;
-      }
+  return {
+    slug,
+    title: data.title || slug,
+    description: data.description || "",
+    pubDate: data.pubDate ? String(data.pubDate) : "",
+    heroImage: data.heroImage || DEFAULT_HERO_IMAGE,
+    content,
+    readingTime: calculateReadingTime(content),
+    locale,
+    draft: Boolean(data.draft),
+  };
+}
 
-      const fileNames = fs.readdirSync(localeDir);
-      const matchedFile = fileNames.find((fileName) => {
-        const fileSlug = fileName.replace(/\.md$/, "").replace(/^\d{4}-\d{2}-\d{2}_/, "");
-        return fileSlug === slug;
-      });
+function isVisible(post: Post): boolean {
+  return INCLUDE_DRAFTS || !post.draft;
+}
 
-      if (matchedFile) {
-        const fullPath = path.join(localeDir, matchedFile);
-        const fileContents = fs.readFileSync(fullPath, "utf8");
-        const { data, content } = matter(fileContents);
+export function getAllPosts(locale?: Language): Post[] {
+  const locales = locale ? [locale] : LANGUAGES;
 
-        return {
-          slug,
-          title: data.title || slug,
-          description: data.description || "",
-          pubDate: data.pubDate || "",
-          heroImage: data.heroImage || "/images/blog-placeholder-1.jpg",
-          content,
-          readingTime: calculateReadingTime(content),
-          locale: loc,
-          draft: data.draft || false,
-        };
-      }
-    }
+  return locales
+    .flatMap((loc) => listMarkdownFiles(loc).map((fileName) => readPost(loc, fileName)))
+    .filter(isVisible)
+    .sort((a, b) => b.pubDate.localeCompare(a.pubDate));
+}
 
-    return null;
-  } catch (error) {
+export function getPostBySlug(slug: string, locale: Language): Post | null {
+  const fileName = listMarkdownFiles(locale).find((name) => fileNameToSlug(name) === slug);
+  if (!fileName) {
     return null;
   }
+
+  const post = readPost(locale, fileName);
+  return isVisible(post) ? post : null;
+}
+
+// Languages in which a given slug exists. Used for hreflang alternates.
+export function getAvailableLocales(slug: string): Language[] {
+  return LANGUAGES.filter((loc) => getPostBySlug(slug, loc) !== null);
 }

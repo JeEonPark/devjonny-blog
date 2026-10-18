@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-18T06:00:00Z",
+  "title": "Design System: Dev/Jonny",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Phosphor Green",
+        "canonical": "rgb(159, 242, 151)",
+        "tonalRamp": [
+          "oklch(20% 0.06 142)",
+          "oklch(32% 0.09 142)",
+          "oklch(45% 0.12 142)",
+          "oklch(58% 0.15 142)",
+          "oklch(72% 0.17 142)",
+          "oklch(88% 0.15 142)",
+          "oklch(93% 0.09 142)",
+          "oklch(97% 0.04 142)"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Lamp-Off Black",
+        "canonical": "rgb(25, 25, 25)",
+        "tonalRamp": [
+          "oklch(10% 0 0)",
+          "oklch(18% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(52% 0 0)",
+          "oklch(68% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Reading Grey",
+        "canonical": "rgb(220, 220, 220)",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(28% 0 0)",
+          "oklch(40% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(68% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(89% 0 0)",
+          "oklch(96% 0 0)"
+        ]
+      },
+      "neutral": {
+        "role": "neutral",
+        "displayName": "Caption Grey",
+        "canonical": "rgb(180, 180, 180)",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(28% 0 0)",
+          "oklch(40% 0 0)",
+          "oklch(52% 0 0)",
+          "oklch(64% 0 0)",
+          "oklch(76% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "code-ground": {
+        "role": "neutral",
+        "displayName": "Code Ground",
+        "canonical": "rgb(32, 32, 32)",
+        "tonalRamp": [
+          "oklch(12% 0 0)",
+          "oklch(20% 0 0)",
+          "oklch(28% 0 0)",
+          "oklch(40% 0 0)",
+          "oklch(54% 0 0)",
+          "oklch(70% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The owner's name on the home page and the post index banner title; 2.25rem from the md breakpoint."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Home section headings and first-level markdown headings; 1.8rem from md. The post detail banner title sits at 1.6rem / 2rem with 1.2 leading."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "Second-level markdown headings; 1.6rem from md. Third-level steps to 1.15rem / 1.3rem."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Post card titles (1.15rem / 1.25rem) and award titles (1.05rem / 1.15rem)."
+      },
+      "title-sm": {
+        "displayName": "Title small",
+        "purpose": "Organisation, institution, and recent-post titles inside panels and rows; 0.95rem to 1.1rem."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "About paragraphs and the profile line, capped at 64ch; 1rem from md. Post card descriptions at 0.95rem and 75%."
+      },
+      "reading": {
+        "displayName": "Reading",
+        "purpose": "Post prose, lists, and blockquotes; 1.1rem from md."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Dates, periods, month labels, and reading time with tabular numerals; 0.75rem to 0.9rem."
+      }
+    },
+    "hairlines": [
+      {
+        "name": "panel-fill",
+        "value": "rgba(255,255,255,0.02)",
+        "purpose": "Translucent panel background; inline utility, not a named token."
+      },
+      {
+        "name": "pill-fill",
+        "value": "rgba(255,255,255,0.03)",
+        "purpose": "Language pill group and image placeholder fill."
+      },
+      {
+        "name": "panel-border",
+        "value": "rgba(255,255,255,0.05)",
+        "purpose": "Panel hairline border at rest."
+      },
+      {
+        "name": "chrome-border",
+        "value": "rgba(255,255,255,0.06)",
+        "purpose": "Scrolled header, footer, and mobile menu borders."
+      },
+      {
+        "name": "row-divider",
+        "value": "rgba(255,255,255,0.08)",
+        "purpose": "Hairline list rows and the language pill group border."
+      },
+      {
+        "name": "code-border",
+        "value": "rgba(255,255,255,0.10)",
+        "purpose": "Code block border and markdown horizontal rules."
+      }
+    ],
+    "shadows": [
+      {
+        "name": "panel-wash",
+        "value": "0 4px 20px rgba(0,0,0,0.08)",
+        "purpose": "Every translucent panel on the home page."
+      },
+      {
+        "name": "pill-wash",
+        "value": "0 4px 20px rgba(0,0,0,0.10)",
+        "purpose": "The language selector group."
+      },
+      {
+        "name": "portrait-lift",
+        "value": "0 12px 32px rgba(0,0,0,0.35)",
+        "purpose": "The profile photo only."
+      },
+      {
+        "name": "marker-ring",
+        "value": "0 0 0 2px rgba(159,242,151,0.3)",
+        "purpose": "Finished timeline entries."
+      },
+      {
+        "name": "ongoing-halo",
+        "value": "0 0 0 3px rgba(159,242,151,0.6), 0 0 18px 4px rgba(159,242,151,0.25)",
+        "purpose": "The one timeline entry with no end date."
+      },
+      {
+        "name": "header-settle",
+        "value": "0 1px 3px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.08)",
+        "purpose": "The fixed header after 20px of scroll."
+      }
+    ],
+    "motion": [
+      {
+        "name": "rise",
+        "value": "rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; from opacity 0 translateY(14px)",
+        "purpose": "Home identity block entrance, staggered 0.08s and 0.16s; removed under prefers-reduced-motion."
+      },
+      {
+        "name": "ease-header",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1) 300ms",
+        "purpose": "Header background and border settle on scroll."
+      },
+      {
+        "name": "ease-menu",
+        "value": "cubic-bezier(0.165, 0.84, 0.44, 1) 300ms",
+        "purpose": "Mobile menu open and close."
+      },
+      {
+        "name": "hover-colour",
+        "value": "transition-colors 200ms to 300ms",
+        "purpose": "Link colour, panel border warm, pill state."
+      },
+      {
+        "name": "image-zoom",
+        "value": "transform 500ms scale(1.03)",
+        "purpose": "Post card hero image on hover."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      }
+    ],
+    "containers": [
+      {
+        "name": "reading-column",
+        "value": "720px",
+        "purpose": "Home and 404; inline max-w utility."
+      },
+      {
+        "name": "post-index",
+        "value": "1152px",
+        "purpose": "Post card grid; Tailwind max-w-6xl."
+      },
+      {
+        "name": "post-detail",
+        "value": "896px",
+        "purpose": "Post hero image and prose; Tailwind max-w-4xl."
+      }
+    ],
+    "languages": [
+      {
+        "code": "kr",
+        "bcp47": "ko",
+        "path": "/",
+        "default": true,
+        "wordBreak": "keep-all"
+      },
+      {
+        "code": "en",
+        "bcp47": "en",
+        "path": "/en",
+        "default": false,
+        "wordBreak": "normal + overflow-wrap anywhere"
+      },
+      {
+        "code": "jp",
+        "bcp47": "ja",
+        "path": "/jp",
+        "default": false,
+        "wordBreak": "normal + overflow-wrap anywhere"
+      }
+    ],
+    "banner": {
+      "height": "240px / 300px",
+      "imageOpacity": 0.4,
+      "overlay": "linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1), rgb(25,25,25))",
+      "contentColumn": "720px",
+      "purpose": "Shared by home and both post surfaces via Hero.tsx and HomePage.tsx."
+    }
+  },
+  "components": [
+    {
+      "name": "Banner Band",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "The shared page opener: dimmed banner under a black-to-ground gradient, title bottom-left inside the 720px column.",
+      "html": "<section class=\"ds-banner\"><div class=\"ds-banner-col\"><h1 class=\"ds-banner-title\">Posts</h1><p class=\"ds-banner-sub\">개발 여정을 기록합니다</p></div></section>",
+      "css": ".ds-banner { position: relative; height: 240px; display: flex; align-items: flex-end; overflow: hidden; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1), rgb(var(--bg, 25, 25, 25))), linear-gradient(120deg, #3a3326, #0f1a22) ; font-family: 'IBM Plex Sans', sans-serif; color: rgb(var(--white, 220, 220, 220)); } .ds-banner-col { position: relative; width: 100%; max-width: 720px; margin: 0 auto; padding: 0 16px 40px; } .ds-banner-title { margin: 0 0 8px; font-size: 1.9rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; } .ds-banner-sub { margin: 0; font-size: 0.95rem; opacity: 0.8; }"
+    },
+    {
+      "name": "Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Translucent card used for About and Awards on the home page; hover warms the border to green.",
+      "html": "<div class=\"ds-panel\"><h3 class=\"ds-panel-title\">Swift Student Challenge 수상</h3><p class=\"ds-panel-meta\"><span>Apple</span> · <time class=\"ds-date\">2024.03</time></p><p class=\"ds-panel-body\">전 세계 350명의 수상자 중 한 명으로 선정.</p></div>",
+      "css": ".ds-panel { background: rgba(255,255,255,0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 16px; padding: 20px; color: rgb(var(--white, 220, 220, 220)); font-family: 'IBM Plex Sans', sans-serif; display: flex; flex-direction: column; gap: 12px; transition: border-color 300ms; } .ds-panel:hover { border-color: rgba(var(--primary, 159, 242, 151), 0.3); } .ds-panel-title { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.375; word-break: keep-all; } .ds-panel-meta { margin: 0; font-size: 0.85rem; color: rgb(var(--neutral, 180, 180, 180)); } .ds-date { color: rgb(var(--primary, 159, 242, 151)); font-weight: 500; font-variant-numeric: tabular-nums; } .ds-panel-body { margin: 0; font-size: 0.85rem; line-height: 1.7; opacity: 0.8; word-break: keep-all; }"
+    },
+    {
+      "name": "Post Card",
+      "kind": "card",
+      "refersTo": "post-card-title",
+      "description": "Post index entry: clipped 9:5 image, semibold title, 75% description, Caption Grey metadata. No panel; the whole card is the link.",
+      "html": "<a class=\"ds-post\" href=\"#\"><span class=\"ds-post-img\"></span><span class=\"ds-post-body\"><span class=\"ds-chip\">Draft</span><span class=\"ds-post-title\">마크다운 스타일 가이드</span><span class=\"ds-post-desc\">마크다운 포매팅에 대한 완벽한 가이드입니다.</span><span class=\"ds-post-meta\"><time>2022년 7월 15일</time> · 1 min read</span></span></a>",
+      "css": ".ds-post { display: flex; flex-direction: column; text-decoration: none; color: rgb(var(--white, 220, 220, 220)); font-family: 'IBM Plex Sans', sans-serif; max-width: 360px; } .ds-post-img { display: block; aspect-ratio: 9 / 5; border-radius: 8px; background: rgba(255,255,255,0.03) linear-gradient(135deg, rgba(159,242,151,0.08), rgba(255,255,255,0.02)); overflow: hidden; transition: transform 500ms; } .ds-post:hover .ds-post-img { transform: scale(1.03); } .ds-post-body { display: flex; flex-direction: column; padding-top: 24px; } .ds-chip { align-self: flex-start; margin-bottom: 8px; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(var(--primary, 159, 242, 151), 0.15); color: rgb(var(--primary, 159, 242, 151)); } .ds-post-title { font-size: 1.15rem; font-weight: 600; line-height: 1.375; margin-bottom: 8px; transition: color 200ms; } .ds-post:hover .ds-post-title { color: rgb(var(--primary, 159, 242, 151)); } .ds-post-desc { font-size: 0.95rem; line-height: 1.625; color: rgba(var(--white, 220, 220, 220), 0.75); margin-bottom: 16px; } .ds-post-meta { font-size: 0.8rem; color: rgb(var(--neutral, 180, 180, 180)); font-variant-numeric: tabular-nums; } .ds-post:focus-visible { outline: 2px solid rgba(var(--primary, 159, 242, 151), 0.8); outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Timeline Entry",
+      "kind": "custom",
+      "refersTo": "panel-timeline",
+      "description": "One Experience row: period column, green marker on the rail, 12px panel with icon tile. The ongoing entry carries the halo.",
+      "html": "<div class=\"ds-tl\"><div class=\"ds-tl-rail\"></div><div class=\"ds-tl-period\"><div class=\"ds-tl-start\">2025.04</div><div class=\"ds-tl-end\">– 현재</div></div><div class=\"ds-tl-marker ds-tl-marker-ongoing\"></div><div class=\"ds-tl-panel\"><div class=\"ds-tl-tile\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z\"/></svg></div><div><h3 class=\"ds-tl-title\">GMO Pepabo, Inc.</h3><p class=\"ds-tl-role\">모바일 엔지니어</p><ul class=\"ds-tl-details\"><li>2025년 4월 입사, 신입사원 연수 수료.</li><li>2025년 9월부터 SUZURI iOS·Android 앱 개발.</li></ul></div></div></div>",
+      "css": ".ds-tl { position: relative; display: flex; gap: 16px; font-family: 'IBM Plex Sans', sans-serif; color: rgb(var(--white, 220, 220, 220)); padding: 8px 0; } .ds-tl-rail { position: absolute; left: 81px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, rgba(var(--primary, 159, 242, 151), 0.7), rgba(var(--primary, 159, 242, 151), 0.5), rgba(var(--primary, 159, 242, 151), 0.05)); } .ds-tl-period { flex-shrink: 0; width: 68px; padding-right: 8px; padding-top: 18px; text-align: right; font-variant-numeric: tabular-nums; } .ds-tl-start { font-size: 0.75rem; font-weight: 500; color: rgb(var(--primary, 159, 242, 151)); line-height: 1.25; } .ds-tl-end { font-size: 0.75rem; color: rgb(var(--neutral, 180, 180, 180)); margin-top: 4px; white-space: nowrap; } .ds-tl-marker { position: absolute; left: 76px; top: 30px; width: 12px; height: 12px; border-radius: 9999px; background: rgb(var(--primary, 159, 242, 151)); border: 3px solid rgb(var(--bg, 25, 25, 25)); box-shadow: 0 0 0 2px rgba(var(--primary, 159, 242, 151), 0.3); } .ds-tl-marker-ongoing { box-shadow: 0 0 0 3px rgba(var(--primary, 159, 242, 151), 0.6), 0 0 18px 4px rgba(var(--primary, 159, 242, 151), 0.25); } .ds-tl-panel { flex-grow: 1; margin-left: 12px; display: flex; align-items: flex-start; gap: 12px; background: rgba(255,255,255,0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 12px; padding: 16px; transition: border-color 300ms; } .ds-tl-panel:hover { border-color: rgba(var(--primary, 159, 242, 151), 0.3); } .ds-tl-tile { flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; background: rgba(var(--primary, 159, 242, 151), 0.12); color: rgb(var(--primary, 159, 242, 151)); display: flex; align-items: center; justify-content: center; margin-top: 2px; } .ds-tl-title { margin: 0; font-size: 0.95rem; font-weight: 600; line-height: 1.25; word-break: keep-all; } .ds-tl-role { margin: 4px 0 0; font-size: 0.8rem; opacity: 0.8; } .ds-tl-details { margin: 12px 0 0; padding-left: 16px; font-size: 0.8rem; line-height: 1.7; color: rgb(var(--neutral, 180, 180, 180)); word-break: keep-all; } .ds-tl-details li::marker { color: rgba(var(--primary, 159, 242, 151), 0.6); } .ds-tl-details li + li { margin-top: 6px; }"
+    },
+    {
+      "name": "Hairline Row",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Bare list row bounded by 8% hairlines; used for Education, Certifications, and Recent Posts.",
+      "html": "<ol class=\"ds-rows\"><li class=\"ds-row\"><span class=\"ds-row-date\">2024.06</span><p class=\"ds-row-text\">정보처리기사</p></li><li class=\"ds-row\"><span class=\"ds-row-date\">2023.12</span><p class=\"ds-row-text\">리눅스마스터 2급</p></li></ol>",
+      "css": ".ds-rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); font-family: 'IBM Plex Sans', sans-serif; color: rgb(var(--white, 220, 220, 220)); } .ds-row { display: grid; grid-template-columns: 96px 1fr; gap: 16px; padding: 16px 0; align-items: baseline; } .ds-row + .ds-row { border-top: 1px solid rgba(255,255,255,0.08); } .ds-row-date { font-size: 0.8rem; font-weight: 500; color: rgb(var(--primary, 159, 242, 151)); font-variant-numeric: tabular-nums; } .ds-row-text { margin: 0; font-size: 0.95rem; word-break: keep-all; }"
+    },
+    {
+      "name": "Language Selector",
+      "kind": "nav",
+      "refersTo": "language-pill-group",
+      "description": "Round pill group switching between KR, EN, and JP; the current language is tinted green.",
+      "html": "<nav class=\"ds-lang\" aria-label=\"Language\"><a class=\"ds-lang-pill ds-lang-current\" href=\"#\" aria-current=\"true\" aria-label=\"한국어\">KR</a><a class=\"ds-lang-pill\" href=\"#\" aria-label=\"English\">EN</a><a class=\"ds-lang-pill\" href=\"#\" aria-label=\"日本語\">JP</a></nav>",
+      "css": ".ds-lang { display: inline-flex; align-items: center; gap: 4px; padding: 4px; background: rgba(255,255,255,0.03); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); font-family: 'IBM Plex Sans', sans-serif; } .ds-lang-pill { padding: 8px 16px; font-size: 0.875rem; font-weight: 500; border-radius: 9999px; color: rgb(var(--neutral, 180, 180, 180)); opacity: 0.7; text-decoration: none; transition: all 300ms; } .ds-lang-pill:hover { opacity: 1; color: rgb(var(--white, 220, 220, 220)); background: rgba(255,255,255,0.08); transform: scale(1.05); } .ds-lang-pill:focus-visible { outline: 2px solid rgba(var(--primary, 159, 242, 151), 0.8); outline-offset: 3px; } .ds-lang-current, .ds-lang-current:hover { background: rgba(var(--primary, 159, 242, 151), 0.15); color: rgb(var(--primary, 159, 242, 151)); opacity: 1; transform: scale(1.05); }"
+    },
+    {
+      "name": "Header Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Wordmark plus text links in the fixed header; active and hover turn green.",
+      "html": "<div class=\"ds-nav\"><a class=\"ds-wordmark\" href=\"#\"><span>Dev</span><span class=\"ds-slash\">/</span><span> Jonny</span></a><span class=\"ds-nav-links\"><a class=\"ds-nav-link ds-nav-active\" href=\"#\" aria-current=\"page\">Home</a><a class=\"ds-nav-link\" href=\"#\">Post</a></span></div>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 32px; height: 75px; font-family: 'IBM Plex Sans', sans-serif; color: rgb(var(--white, 220, 220, 220)); } .ds-wordmark { font-size: 20px; font-weight: 500; opacity: 0.9; text-decoration: none; color: inherit; padding: 8px 4px; } .ds-slash { color: rgb(var(--primary, 159, 242, 151)); } .ds-nav-links { display: inline-flex; gap: 4px; } .ds-nav-link { display: inline-block; padding: 8px 12px; text-decoration: none; color: rgb(var(--white, 220, 220, 220)); transition: color 200ms; } .ds-nav-link:hover, .ds-nav-active { color: rgb(var(--primary, 159, 242, 151)); } .ds-nav-link:focus-visible { outline: 2px solid rgba(var(--primary, 159, 242, 151), 0.8); outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "refersTo": "nav-link",
+      "description": "The site's only call to action: green text, underline on hover. There are no filled buttons.",
+      "html": "<a class=\"ds-link\" href=\"#\">모든 글 보기 →</a>",
+      "css": ".ds-link { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.9rem; color: rgb(var(--primary, 159, 242, 151)); text-decoration: none; text-underline-offset: 0.2em; text-decoration-thickness: 1px; } .ds-link:hover { text-decoration: underline; } .ds-link:focus-visible { outline: 2px solid rgba(var(--primary, 159, 242, 151), 0.8); outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Draft Chip",
+      "kind": "chip",
+      "refersTo": "chip-draft",
+      "description": "Small uppercase badge on draft posts, visible in development only.",
+      "html": "<span class=\"ds-chip\">Draft</span>",
+      "css": ".ds-chip { display: inline-block; padding: 2px 8px; border-radius: 4px; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(var(--primary, 159, 242, 151), 0.15); color: rgb(var(--primary, 159, 242, 151)); }"
+    },
+    {
+      "name": "Inline Code and Code Block",
+      "kind": "custom",
+      "refersTo": "code-inline",
+      "description": "Markdown code in posts: green-tinted inline code and a lifted 8px code block.",
+      "html": "<p class=\"ds-prose\">인라인 코드: <code class=\"ds-code\">const x = 10;</code></p><pre class=\"ds-pre\"><code>function hello() {\n  console.log(\"안녕하세요, 세계!\");\n}</code></pre>",
+      "css": ".ds-prose { font-family: 'IBM Plex Sans', sans-serif; font-size: 1.05rem; line-height: 1.8; color: rgba(var(--white, 220, 220, 220), 0.9); margin: 0 0 24px; } .ds-code { background: rgba(var(--primary, 159, 242, 151), 0.15); color: rgb(var(--primary, 159, 242, 151)); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; } .ds-pre { background: rgb(32, 32, 32); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 16px; font-size: 0.9rem; overflow-x: auto; margin: 0; color: rgb(var(--white, 220, 220, 220)); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Lit Desk at Night",
+    "overview": "The whole site sits on one near-black ground, the way a desk lamp leaves the rest of the room dark. Nothing on the page competes with the text; the only colour that is allowed to glow is a single light green, and it glows on exactly the things a reader scans for: dates, the slash in the wordmark, links, the timeline rail, and the marker of the job that is still running. Everything else is grey text in three tones on a ground that barely changes.\n\nDensity is editorial rather than dashboard-like. Every page opens with the same dimmed banner band and a 720px column; on the home page the career record is paced by alternating three materials down the scroll: a translucent panel (About, Awards, timeline entries), a glowing rail (Experience), and bare hairline rows (Education, Certifications, Recent Posts). The post index and post detail pages widen the column below the banner for images and prose but keep the same ground, hairlines, and accent. The build confirmed two rejections: no typing headline or gradient text in the first viewport, and no generated or stock imagery beyond the existing banner, profile photo, and post placeholders.\n\nThe site is trilingual by construction. Korean is the default, English and Japanese are peers at `/en` and `/jp`, and the type rules know the difference: Korean keeps words whole with `keep-all`, while English and Japanese fall back to normal breaking because Japanese has no spaces to break at.",
+    "keyCharacteristics": [
+      "One accent colour, used sparingly, on scan targets only.",
+      "Translucent white-on-black surfaces at 2% to 3% with hairline borders at 5% to 8%.",
+      "IBM Plex Sans at four self-hosted weights (400, 500, 600, 700) for everything; no second face.",
+      "A shared 240px / 300px banner band and a 720px reading column with 64px to 80px section rhythm.",
+      "Entrance motion limited to one short rise on the home identity block; everything else moves only on hover."
+    ],
+    "rules": [
+      {
+        "name": "The One Glow Rule",
+        "body": "Phosphor green is text and thin lines, never a filled block. Fills behind it stay at or below 20% alpha and always carry green text or a green icon on top.",
+        "section": "colors"
+      },
+      {
+        "name": "The Opacity Not Palette Rule",
+        "body": "Hierarchy inside body copy is made by lowering the opacity of Reading Grey (90, 80, 75, 70), not by introducing a new grey. The palette is exactly four custom properties plus the code ground.",
+        "section": "colors"
+      },
+      {
+        "name": "The Keep-All Rule",
+        "body": "Korean text carries `word-break: keep-all` (`break-keep`) so words never split mid-syllable. The same class under an `en` or `ja` `lang` attribute resolves to normal breaking with `overflow-wrap: anywhere`, because Japanese has no spaces and would otherwise refuse to wrap.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Date Rule",
+        "body": "Every date, period, GPA, reading time, and month label is set with tabular numerals so the left column of the timeline and hairline rows stays aligned.",
+        "section": "typography"
+      },
+      {
+        "name": "The Banner Leads Rule",
+        "body": "Inside a post, no markdown heading may exceed the banner title. Markdown steps down from 1.8rem so the title the reader arrived under stays the largest text on the page.",
+        "section": "typography"
+      },
+      {
+        "name": "The Halo Is State Rule",
+        "body": "Green glow appears only on the ongoing timeline marker. It signals \"still happening\"; it is never decoration on cards, buttons, or headings.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Hover Is a Border Rule",
+        "body": "Panels respond to hover by warming their border to green at 30% over 300ms. They do not lift, scale, or change fill. Post card images are the one exception: they zoom 3% over 500ms inside their clipped 8px frame.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep every new surface on the rgb(25,25,25) ground and build hierarchy with Reading Grey opacity steps (90, 80, 75, 70) and Caption Grey.",
+      "Do open every page with the shared banner band: 240px / 300px, image at 40%, black-to-ground gradient, content inside the 720px column.",
+      "Do make panels from rgba(255,255,255,0.02) fill, 12px blur, a 5% hairline, and the panel wash shadow; hover warms the border to green at 30%.",
+      "Do set dates, periods, and reading times in tabular numerals; dates and periods in Phosphor Green at weight 500, metadata in Caption Grey.",
+      "Do keep break-keep on Korean-facing headings and copy, and rely on the lang attribute to relax it for English and Japanese.",
+      "Do ship every text in all three languages; the language selector and footer always list KR, EN, and JP.",
+      "Do respect prefers-reduced-motion: any new entrance animation must switch off the way rise does."
+    ],
+    "donts": [
+      "Don't fill a block with Phosphor Green or put dark text on it; green is for text, hairlines, and tints at 20% or below.",
+      "Don't add a gradient headline, typing effect, or splash hero; the first viewport is the banner band with the portrait, name, role, and contact row, or the page title on post pages.",
+      "Don't introduce a second typeface or a weight outside 400 to 700; only those four Plex files ship.",
+      "Don't let a markdown heading outgrow the banner title; the ramp inside a post starts at 1.8rem.",
+      "Don't add generated, stock, or placeholder imagery beyond the existing banner, portrait, and post hero images.",
+      "Don't lift cards with heavy or offset shadows; depth on this site is a hairline and a faint wash.",
+      "Don't add a new custom property for a grey; reuse Reading Grey at an opacity step or Caption Grey."
+    ]
+  }
+}

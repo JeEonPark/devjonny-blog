@@ -1,17 +1,37 @@
+import type { Metadata } from "next";
 import PostPage from "@/components/pages/PostPage";
+import { buildPageMetadata } from "@/lib/metadata";
 import { getAllPosts } from "@/lib/posts";
-import { type Language } from "@/lib/translations";
+import { notFound } from "next/navigation";
+import { languageStaticParams, resolveLang } from "@/lib/resolve-lang";
+import { POSTS_ENABLED } from "@/lib/site";
+import { getTranslation } from "@/lib/translations";
 
 interface PostPagePropsLang {
-  params: Promise<{
-    lang: Language;
-  }>;
+  params: Promise<{ lang: string }>;
+}
+
+export async function generateMetadata({ params }: PostPagePropsLang): Promise<Metadata> {
+  if (!POSTS_ENABLED) {
+    return {};
+  }
+  const lang = resolveLang((await params).lang, "post");
+  return buildPageMetadata({
+    lang,
+    path: "/post",
+    title: getTranslation(lang, "post.page.title"),
+    description: getTranslation(lang, "post.page.subtitle"),
+  });
 }
 
 export default async function PostPageLang({ params }: PostPagePropsLang) {
-  const { lang } = await params;
-  // 현재 언어에 맞는 포스트만 가져오기
-  const posts = getAllPosts(lang);
+  if (!POSTS_ENABLED) {
+    notFound();
+  }
+  const lang = resolveLang((await params).lang, "post");
+  return <PostPage lang={lang} posts={getAllPosts(lang)} />;
+}
 
-  return <PostPage lang={lang} posts={posts} />;
+export function generateStaticParams() {
+  return POSTS_ENABLED ? languageStaticParams() : [];
 }

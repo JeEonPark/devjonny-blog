@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DevJonny blog
 
-## Getting Started
+Personal portfolio and blog at [devjonny.me](https://devjonny.me), built with Next.js (App Router), Tailwind CSS and Markdown.
 
-First, run the development server:
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Posts marked `draft: true` are visible in `npm run dev` and hidden from production builds.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Writing a post
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Posts are currently switched off with `POSTS_ENABLED` in `src/lib/site.ts`. Set it to `true` to
+show the Post menu, the `/post` routes and the Recent Posts section again.
 
-## Learn More
+Posts live in `content/posts/<lang>/YYYY-MM-DD_<slug>.md`, where `<lang>` is `kr`, `en` or `jp`.
+The date prefix is stripped from the file name to produce the URL slug, so the same slug in
+multiple language folders is treated as one post with translations.
 
-To learn more about Next.js, take a look at the following resources:
+```md
+---
+title: "Post title"
+description: "One-line summary shown in the list and in meta tags"
+pubDate: "2025-01-31"
+heroImage: "/images/blog-placeholder-1.jpg"
+draft: false
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Markdown body...
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Routes
 
-## Deploy on Vercel
+| Path | Language |
+| --- | --- |
+| `/`, `/post`, `/post/<slug>` | Korean (default) |
+| `/en/...`, `/jp/...` | English, Japanese |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`/kr/...` permanently redirects to the unprefixed URL. Unknown language prefixes return 404.
+`/sitemap.xml` and `/robots.txt` are generated at build time.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+Pushing to `main` builds the site in GitHub Actions and deploys it to the server described in
+[SERVER.md](./SERVER.md).

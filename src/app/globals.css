@@ -4,30 +4,6 @@
 
 @font-face {
   font-family: "IBM Plex Sans";
-  src: url("/fonts/ibm-plex-sans-100.woff2") format("woff2");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "IBM Plex Sans";
-  src: url("/fonts/ibm-plex-sans-200.woff2") format("woff2");
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "IBM Plex Sans";
-  src: url("/fonts/ibm-plex-sans-300.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "IBM Plex Sans";
   src: url("/fonts/ibm-plex-sans-regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
@@ -59,12 +35,9 @@
 }
 
 :root {
+  color-scheme: dark;
   --primary: 159, 242, 151;
-  --black: 25, 25, 25;
   --white: 220, 220, 220;
-  --gray: 96, 115, 159;
-  --gray-light: 229, 233, 240;
-  --gray-dark: 34, 41, 57;
   --neutral: 180, 180, 180;
   --bg: 25, 25, 25;
 }
@@ -76,36 +49,13 @@ body {
 }
 
 /* Header Styles */
-header.scrolled {
-  background: rgba(25, 25, 25, 0.75);
+header.scrolled,
+header.menu-open {
+  background: rgba(25, 25, 25, 0.85);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-/* Mobile menu open header background */
-header.menu-open {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-@media (prefers-color-scheme: dark) {
-  header.menu-open {
-    background: rgba(25, 25, 25, 0.98);
-  }
-}
-
-/* Scroll mobile menu background */
-header.scrolled #mobile-menu {
-  background: rgba(25, 25, 25, 0.98);
-  backdrop-filter: blur(20px);
-}
-
-@media (prefers-color-scheme: light) {
-  header.scrolled #mobile-menu {
-    background: rgba(255, 255, 255, 0.98);
-  }
 }
 
 /* HeaderLink active state */
@@ -113,17 +63,95 @@ header.scrolled #mobile-menu {
   color: rgb(var(--primary));
 }
 
-/* Line clamp utilities */
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
 
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+/* `break-keep` (word-break: keep-all) keeps Korean words intact; Japanese
+   has no spaces, so the same rule would stop it from wrapping at all. */
+:is([lang^="ja"], [lang^="en"]) .break-keep {
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+/* highlight.js ships its own slate background; the <pre> carries the ground instead. */
+.markdown-content pre code.hljs {
+  background: transparent;
+  padding: 0;
+}
+
+/* Browser surfaces themed from the palette */
+::selection {
+  background: rgba(var(--primary), 0.28);
+  color: rgb(var(--white));
+}
+
+:focus-visible {
+  outline: 2px solid rgba(var(--primary), 0.8);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+html {
+  scrollbar-color: rgba(var(--primary), 0.35) rgb(var(--bg));
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--bg));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--primary), 0.3);
+  border-radius: 999px;
+  border: 2px solid rgb(var(--bg));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--primary), 0.5);
+}
+
+/* Home intro: one authored entrance, settled quickly */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.rise-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.rise-delay-2 {
+  animation-delay: 0.16s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
 }

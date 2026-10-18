@@ -1,4 +1,6 @@
-export type Language = "kr" | "en" | "jp";
+import type { Language } from "./i18n";
+
+export type { Language } from "./i18n";
 
 export const translations = {
   kr: {
@@ -24,6 +26,20 @@ export const translations = {
     "work.project.api.description": "견고한 API 관리 및 모니터링을 갖춘 확장 가능한 마이크로서비스 아키텍처입니다.",
     "post.page.title": "Posts",
     "post.page.subtitle": "생각과 과정을 기록하는 공간",
+    "post.empty": "아직 포스트가 없습니다. 조금만 기다려 주세요!",
+    "notfound.title": "페이지를 찾을 수 없습니다",
+    "notfound.description": "요청하신 페이지가 존재하지 않거나 이동되었습니다.",
+    "notfound.home": "홈으로 돌아가기",
+    "home.about": "About",
+    "home.experience": "Experience",
+    "home.education": "Education",
+    "home.awards": "Awards",
+    "home.certifications": "Certifications",
+    "home.recentPosts": "Recent Posts",
+    "home.viewAllPosts": "모든 글 보기",
+    "home.contact.email": "이메일",
+    "home.contact.github": "GitHub",
+    "footer.rights": "All rights reserved.",
   },
   en: {
     "intro.company": "Hello. I'm Jonny, developing iOS and Android apps for a service called SUZURI at a company called GMO Pepabo in Tokyo.",
@@ -49,6 +65,20 @@ export const translations = {
     "work.project.api.description": "Scalable microservices architecture with robust API management and monitoring.",
     "post.page.title": "Posts",
     "post.page.subtitle": "A space to record thoughts and processes",
+    "post.empty": "No posts yet. Stay tuned!",
+    "notfound.title": "Page not found",
+    "notfound.description": "The page you are looking for does not exist or has been moved.",
+    "notfound.home": "Back to home",
+    "home.about": "About",
+    "home.experience": "Experience",
+    "home.education": "Education",
+    "home.awards": "Awards",
+    "home.certifications": "Certifications",
+    "home.recentPosts": "Recent Posts",
+    "home.viewAllPosts": "View all posts",
+    "home.contact.email": "Email",
+    "home.contact.github": "GitHub",
+    "footer.rights": "All rights reserved.",
   },
   jp: {
     "intro.company": "こんにちは。東京のGMO PepaboというSUZURIというサービスのiOS、Androidアプリを開発しているJonnyです。",
@@ -75,10 +105,26 @@ export const translations = {
       "堅牢なAPI管理とモニタリングを備えたスケーラブルなマイクロサービスアーキテクチャです。",
     "post.page.title": "Posts",
     "post.page.subtitle": "思考と過程を記録する空間",
+    "post.empty": "まだ投稿がありません。もうしばらくお待ちください！",
+    "notfound.title": "ページが見つかりません",
+    "notfound.description": "お探しのページは存在しないか、移動されました。",
+    "notfound.home": "ホームに戻る",
+    "home.about": "About",
+    "home.experience": "Experience",
+    "home.education": "Education",
+    "home.awards": "Awards",
+    "home.certifications": "Certifications",
+    "home.recentPosts": "Recent Posts",
+    "home.viewAllPosts": "すべての記事を見る",
+    "home.contact.email": "メール",
+    "home.contact.github": "GitHub",
+    "footer.rights": "All rights reserved.",
   },
 };
 
-export function getTranslation(lang: Language, key: string): string {
-  const langTranslations = translations[lang];
-  return (langTranslations as Record<string, string>)[key] || key;
+export type TranslationKey = keyof (typeof translations)["kr"];
+
+export function getTranslation(lang: Language, key: TranslationKey | string): string {
+  const langTranslations: Record<string, string> = translations[lang] ?? translations.kr;
+  return langTranslations[key] || key;
 }

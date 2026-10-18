@@ -1,0 +1,18 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/pages/PostDetailPage.tsx"
+        ],
+        "createdAt": "2026-10-18T02:56:37.591Z",
+        "reason": "model: img src is a dynamic react-markdown prop, never empty at render"
+      }
+    ]
+  },
+  "buildPath": "code"
+}
