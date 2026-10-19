@@ -4,7 +4,6 @@ export type { Language } from "./i18n";
 
 export const translations = {
   kr: {
-    "intro.company": "안녕하세요. GMO Pepabo라는 도쿄의 회사에서 SUZURI 라는 서비스의 iOS, Android 앱을 개발하고 있는 Jonny 입니다.",
     "intro.title": "끊임 없이 성장한다는 것은 무엇일까요?",
     "intro.paragraph1":
       "매일 배우고, 익히고, 만들어내는 일을 반복하면서도 '나는 지금 성장하고 있는 걸까?' 라는 질문이 자주 떠오릅니다.",
@@ -42,7 +41,6 @@ export const translations = {
     "footer.rights": "All rights reserved.",
   },
   en: {
-    "intro.company": "Hello. I'm Jonny, developing iOS and Android apps for a service called SUZURI at a company called GMO Pepabo in Tokyo.",
     "intro.title": "What does it mean to grow continuously?",
     "intro.paragraph1":
       'While repeating the daily routine of learning, mastering, and creating, I often ask myself, "Am I really growing right now?"',
@@ -81,7 +79,6 @@ export const translations = {
     "footer.rights": "All rights reserved.",
   },
   jp: {
-    "intro.company": "こんにちは。東京のGMO PepaboというSUZURIというサービスのiOS、Androidアプリを開発しているJonnyです。",
     "intro.title": "継続的に成長するとはどういうことでしょうか？",
     "intro.paragraph1":
       "毎日学び、習得し、創造するという日常を繰り返しながらも、「私は今本当に成長しているのだろうか？」という疑問がよく浮かびます。",

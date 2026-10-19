@@ -55,7 +55,7 @@ export const CV: Record<Language, CvData> = {
     title: "모바일 엔지니어",
     affiliation: "GMO Pepabo · 도쿄",
     profile:
-      "GMO Pepabo에서 SUZURI의 iOS·Android 앱을 개발하는 모바일 엔지니어입니다. 모바일, 프론트엔드, 서버 개발에 관심이 있고, 앱 기획과 UX 디자인, 개발까지 직접 경험했습니다. 호기심과 끈기, 그리고 함께 성장하려는 마음으로 일합니다.",
+      "안녕하세요. 도쿄의 GMO Pepabo에서 SUZURI의 iOS·Android 앱을 개발하고 있는 Jonny입니다. 모바일을 중심으로 프론트엔드와 서버 개발에도 관심이 있고, 앱 기획과 UX 디자인, 개발까지 직접 경험했습니다. 호기심과 끈기, 그리고 함께 성장하려는 마음으로 일하고 있습니다.",
     experience: [
       {
         start: "2025-04",
@@ -138,7 +138,7 @@ export const CV: Record<Language, CvData> = {
     title: "Mobile Engineer",
     affiliation: "GMO Pepabo · Tokyo",
     profile:
-      "Mobile engineer developing the SUZURI iOS and Android apps at GMO Pepabo. Interested in mobile, front-end, and server development, with experience in app planning, UX design, and development. Driven by curiosity, persistence, and a commitment to growing through collaboration.",
+      "Hello, I'm Jonny. I develop the SUZURI iOS and Android apps at GMO Pepabo in Tokyo. Mobile is my home ground, but I'm also interested in front-end and server development, and I've taken apps from planning and UX design through to shipping. I'm driven by curiosity, persistence, and a commitment to growing together with the people I work with.",
     experience: [
       {
         start: "2025-04",
@@ -230,7 +230,7 @@ export const CV: Record<Language, CvData> = {
     title: "モバイルエンジニア",
     affiliation: "GMOペパボ · 東京",
     profile:
-      "GMOペパボでSUZURIのiOS・Androidアプリを開発しているモバイルエンジニアです。モバイル、フロントエンド、サーバー開発に関心があり、アプリの企画・UXデザイン・開発を経験してきました。好奇心と粘り強さ、そして協働を通じて成長する姿勢を大切にしています。",
+      "こんにちは。東京のGMOペパボでSUZURIのiOS・Androidアプリを開発しているJonnyです。モバイルを軸にフロントエンドやサーバー開発にも関心があり、アプリの企画・UXデザインから開発まで一通り経験してきました。好奇心と粘り強さ、そして一緒に成長していく姿勢を大切にしています。",
     experience: [
       {
         start: "2025-04",
