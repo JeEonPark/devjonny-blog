@@ -61,7 +61,6 @@ function MailIcon() {
 
 export default function HomePage({ lang, posts }: HomePageProps) {
   const cv = CV[lang];
-  const intro = ["intro.title", "intro.paragraph1", "intro.paragraph2", "intro.paragraph3"] as const;
 
   return (
     <main className="min-h-screen" lang={BCP47[lang]}>
@@ -104,10 +103,13 @@ export default function HomePage({ lang, posts }: HomePageProps) {
               </span>
             </h1>
             <p className="mt-2 text-[0.95rem] md:text-[1.05rem] font-medium text-[rgb(var(--primary))] m-0">
-              {cv.title} · {cv.affiliation}
+              {cv.title}
             </p>
             <p className="mt-5 text-[0.95rem] md:text-[1.05rem] leading-[1.8] text-[rgb(var(--white))] opacity-90 max-w-[64ch] break-keep m-0">
               {cv.profile}
+            </p>
+            <p className="mt-4 text-[0.9rem] md:text-[1rem] leading-[1.8] text-[rgb(var(--white))] opacity-75 max-w-[64ch] break-keep m-0">
+              {cv.reflection}
             </p>
 
             <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 list-none m-0 p-0 text-[0.9rem]">
@@ -134,28 +136,8 @@ export default function HomePage({ lang, posts }: HomePageProps) {
 
         </section>
 
-        {/* About: the owner's own words */}
-        <section aria-labelledby="about" className="mt-14 md:mt-16">
-          <SectionHeading id="about">{getTranslation(lang, "home.about")}</SectionHeading>
-          <div className={`${PANEL_CLASS} rounded-2xl p-5 md:p-8 space-y-4 md:space-y-5`}>
-            {intro.map((key, index) => {
-              const className =
-                "text-[0.9rem] md:text-[1rem] leading-[1.75] md:leading-[1.85] text-[rgb(var(--white))] break-keep break-words m-0 " +
-                (index === 0 ? "font-semibold" : "opacity-90");
-              // Paragraphs 2 and 3 carry trusted inline markup (<br>, <strong>) from translations.ts.
-              return index >= 2 ? (
-                <p key={key} className={className} dangerouslySetInnerHTML={{ __html: getTranslation(lang, key) }} />
-              ) : (
-                <p key={key} className={className}>
-                  {getTranslation(lang, key)}
-                </p>
-              );
-            })}
-          </div>
-        </section>
-
         {/* Experience */}
-        <section aria-labelledby="experience" className="mt-16 md:mt-20">
+        <section aria-labelledby="experience" className="mt-14 md:mt-16">
           <SectionHeading id="experience">{getTranslation(lang, "home.experience")}</SectionHeading>
           <div className="relative">
             <div

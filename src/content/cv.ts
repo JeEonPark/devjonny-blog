@@ -36,8 +36,9 @@ export interface CertificationEntry {
 export interface CvData {
   name: string;
   title: string;
-  affiliation: string;
   profile: string;
+  // A second, shorter paragraph in the owner's own voice.
+  reflection: string;
   experience: ExperienceEntry[];
   education: EducationEntry[];
   awards: AwardEntry[];
@@ -53,9 +54,10 @@ export const CV: Record<Language, CvData> = {
   kr: {
     name: "JeEon Park",
     title: "모바일 엔지니어",
-    affiliation: "GMO Pepabo · 도쿄",
     profile:
       "안녕하세요. 도쿄의 GMO Pepabo에서 SUZURI의 iOS·Android 앱을 개발하고 있는 Jonny입니다. 모바일을 중심으로 프론트엔드와 서버 개발에도 관심이 있고, 앱 기획과 UX 디자인, 개발까지 직접 경험했습니다. 호기심과 끈기, 그리고 함께 성장하려는 마음으로 일하고 있습니다.",
+    reflection:
+      "'끊임없이 성장한다는 것은 무엇일까'를 스스로에게 자주 묻습니다. 그 질문 속에서 무엇을 만들지, 왜 만드는지, 어떻게 만들지 고민하며 개발을 계속하고 있습니다.",
     experience: [
       {
         start: "2025-04",
@@ -136,9 +138,10 @@ export const CV: Record<Language, CvData> = {
   en: {
     name: "JeEon Park",
     title: "Mobile Engineer",
-    affiliation: "GMO Pepabo · Tokyo",
     profile:
       "Hello, I'm Jonny. I develop the SUZURI iOS and Android apps at GMO Pepabo in Tokyo. Mobile is my home ground, but I'm also interested in front-end and server development, and I've taken apps from planning and UX design through to shipping. I'm driven by curiosity, persistence, and a commitment to growing together with the people I work with.",
+    reflection:
+      "I often ask myself what it really means to keep growing. That question is where my work starts: deciding what to build, why to build it, and how.",
     experience: [
       {
         start: "2025-04",
@@ -228,9 +231,10 @@ export const CV: Record<Language, CvData> = {
   jp: {
     name: "JeEon Park",
     title: "モバイルエンジニア",
-    affiliation: "GMOペパボ · 東京",
     profile:
       "こんにちは。東京のGMOペパボでSUZURIのiOS・Androidアプリを開発しているJonnyです。モバイルを軸にフロントエンドやサーバー開発にも関心があり、アプリの企画・UXデザインから開発まで一通り経験してきました。好奇心と粘り強さ、そして一緒に成長していく姿勢を大切にしています。",
+    reflection:
+      "「成長し続けるとはどういうことか」を自分によく問いかけます。その問いの中で、何を作るか、なぜ作るか、どう作るかを考えながら開発を続けています。",
     experience: [
       {
         start: "2025-04",

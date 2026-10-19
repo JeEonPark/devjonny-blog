@@ -4,13 +4,6 @@ export type { Language } from "./i18n";
 
 export const translations = {
   kr: {
-    "intro.title": "끊임 없이 성장한다는 것은 무엇일까요?",
-    "intro.paragraph1":
-      "매일 배우고, 익히고, 만들어내는 일을 반복하면서도 '나는 지금 성장하고 있는 걸까?' 라는 질문이 자주 떠오릅니다.",
-    "intro.paragraph2":
-      "답은 아직도 확실히는 모르겠습니다.<br>하지만 한 가지 확신하는 건, 성장이란 스스로에게 질문을 던지는 것에서 시작됩니다.",
-    "intro.paragraph3":
-      '저는 그런 질문들 속에서 개발을 계속 하고 있으며, <strong class="font-semibold">무엇을 만들지, 왜 만드는지 어떻게 만들지</strong> 고민하며 살고 있습니다.<br>이 포스트에는 <strong class="font-semibold">그 고민과 과정들을 차곡차곡 기록</strong>해보려고 합니다.',
     "work.page.title": "Work",
     "work.page.subtitle": "프로젝트와 실험들의 모음",
     "work.project.alpha.title": "프로젝트 알파",
@@ -29,7 +22,6 @@ export const translations = {
     "notfound.title": "페이지를 찾을 수 없습니다",
     "notfound.description": "요청하신 페이지가 존재하지 않거나 이동되었습니다.",
     "notfound.home": "홈으로 돌아가기",
-    "home.about": "About",
     "home.experience": "Experience",
     "home.education": "Education",
     "home.awards": "Awards",
@@ -41,13 +33,6 @@ export const translations = {
     "footer.rights": "All rights reserved.",
   },
   en: {
-    "intro.title": "What does it mean to grow continuously?",
-    "intro.paragraph1":
-      'While repeating the daily routine of learning, mastering, and creating, I often ask myself, "Am I really growing right now?"',
-    "intro.paragraph2":
-      "I still don't know the answer for sure.<br>But one thing I'm confident about is that growth starts with asking questions to myself.",
-    "intro.paragraph3":
-      'I continue to develop in those questions, living while contemplating <strong class="font-semibold">what to create, why to create, and how to create</strong>.<br>I plan to record <strong class="font-semibold">those thoughts and processes step by step</strong> in this post.',
     "work.page.title": "Work",
     "work.page.subtitle": "A collection of my projects and experiments",
     "work.project.alpha.title": "Project Alpha",
@@ -67,7 +52,6 @@ export const translations = {
     "notfound.title": "Page not found",
     "notfound.description": "The page you are looking for does not exist or has been moved.",
     "notfound.home": "Back to home",
-    "home.about": "About",
     "home.experience": "Experience",
     "home.education": "Education",
     "home.awards": "Awards",
@@ -79,13 +63,6 @@ export const translations = {
     "footer.rights": "All rights reserved.",
   },
   jp: {
-    "intro.title": "継続的に成長するとはどういうことでしょうか？",
-    "intro.paragraph1":
-      "毎日学び、習得し、創造するという日常を繰り返しながらも、「私は今本当に成長しているのだろうか？」という疑問がよく浮かびます。",
-    "intro.paragraph2":
-      "答えはまだ確実には分かりません。<br>しかし、一つ確信しているのは、成長とは自分自身に質問を投げかけることから始まるということです。",
-    "intro.paragraph3":
-      '私はそのような質問の中で開発を続けており、<strong class="font-semibold">何を作るか、なぜ作るか、どのように作るか</strong>を考えながら生きています。<br>この投稿には<strong class="font-semibold">その悩みと過程を一つずつ記録</strong>していこうと思います。',
     "work.page.title": "Work",
     "work.page.subtitle": "プロジェクトと実験のコレクション",
     "work.project.alpha.title": "プロジェクトアルファ",
@@ -106,7 +83,6 @@ export const translations = {
     "notfound.title": "ページが見つかりません",
     "notfound.description": "お探しのページは存在しないか、移動されました。",
     "notfound.home": "ホームに戻る",
-    "home.about": "About",
     "home.experience": "Experience",
     "home.education": "Education",
     "home.awards": "Awards",
