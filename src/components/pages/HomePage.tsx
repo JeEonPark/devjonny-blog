@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import LanguageSelector from "@/components/LanguageSelector";
 import { CONTACT, CV, formatMonth, formatPeriod, type Period } from "@/content/cv";
 import { BCP47, formatDate, localizePath, type Language } from "@/lib/i18n";
 import type { Post } from "@/lib/posts";
@@ -133,13 +132,10 @@ export default function HomePage({ lang, posts }: HomePageProps) {
             </ul>
           </div>
 
-          <div className="rise rise-delay-2 mt-10">
-            <LanguageSelector align="start" />
-          </div>
         </section>
 
         {/* About: the owner's own words */}
-        <section aria-labelledby="about" className="mt-6">
+        <section aria-labelledby="about" className="mt-14 md:mt-16">
           <SectionHeading id="about">{getTranslation(lang, "home.about")}</SectionHeading>
           <div className={`${PANEL_CLASS} rounded-2xl p-5 md:p-8 space-y-4 md:space-y-5`}>
             {intro.map((key, index) => {

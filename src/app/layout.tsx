@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { BCP47, DEFAULT_LANGUAGE } from "@/lib/i18n";
 import { AUTHOR_NAME, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import FirstLoadMarker from "@/components/FirstLoadMarker";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased" suppressHydrationWarning>
         {children}
+        <FirstLoadMarker />
       </body>
     </html>
   );

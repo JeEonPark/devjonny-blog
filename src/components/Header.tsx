@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import HeaderLink from "./HeaderLink";
+import LanguageSelector from "./LanguageSelector";
 import { getLanguageFromPathname, localizePath } from "@/lib/i18n";
 import { GITHUB_URL, POSTS_ENABLED } from "@/lib/site";
 
@@ -126,19 +127,22 @@ export default function Header() {
           </div>
         )}
 
-        {/* Social Links */}
-        <div
-          className={`social-links gap-4 ${hasMenu ? "hidden md:flex" : "flex"}`}
-        >
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex text-[rgb(var(--white))] p-2 rounded-lg transition-all duration-200 hover:bg-white/5"
+        {/* Language switch + social links */}
+        <div className="flex items-center gap-2 md:gap-4">
+          <LanguageSelector size="sm" />
+          <div
+            className={`social-links gap-4 ${hasMenu ? "hidden md:flex" : "flex"}`}
           >
-            <span className="sr-only">Go to GitHub</span>
-            <GitHubIcon size={28} />
-          </a>
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex text-[rgb(var(--white))] p-2 rounded-lg transition-all duration-200 hover:bg-white/5"
+            >
+              <span className="sr-only">Go to GitHub</span>
+              <GitHubIcon size={28} />
+            </a>
+          </div>
         </div>
 
         {/* Mobile Menu Button */}

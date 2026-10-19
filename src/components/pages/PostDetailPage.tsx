@@ -5,7 +5,6 @@ import rehypeHighlight from "rehype-highlight";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import LanguageSelector from "@/components/LanguageSelector";
 import { BCP47, formatDate, localizePath } from "@/lib/i18n";
 import type { Post } from "@/lib/posts";
 import { getTranslation, type Language } from "@/lib/translations";
@@ -44,8 +43,6 @@ export default function PostDetailPage({ post, lang }: PostDetailPageProps) {
       </Hero>
 
       <div className="max-w-4xl mx-auto pt-8 pb-16 px-4 md:px-6">
-        <LanguageSelector />
-
         {post.heroImage && (
           <div className="mb-8 overflow-hidden rounded-lg relative aspect-[16/9] bg-white/[0.03]">
             <Image
